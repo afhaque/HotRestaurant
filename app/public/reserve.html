@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Reservation Page</title>
+
+	<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+	<div class="container">
+		
+		<div class="jumbotron">
+			<h1 class="text-center">Hot Restaurant: Reservation Page</h1>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+
+				<!-- Reservation Page -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">Table Reservation</h4>
+					</div>
+					<div class="panel-body">
+
+						<form role="form">
+				
+							<div class="form-group">
+								<label for="">Name</label>
+								<input type="text" class="form-control" id="reserve_name">
+							</div>
+
+							<div class="form-group">
+								<label for="">Phone Number</label>
+								<input type="text" class="form-control" id="reserve_phone">
+							</div>
+
+							<div class="form-group">
+								<label for="">Email</label>
+								<input type="text" class="form-control" id="reserve_email">
+							</div>
+
+							<div class="form-group">
+								<label for="">Unique ID</label>
+								<input type="text" class="form-control" id="reserve_uniqueID">
+							</div>
+
+							<button type="submit" class="btn btn-primary submit">Submit</button>
+						</form>
+
+					</div>
+				</div>
+	
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
+
+<script type="text/javascript">
+	$(".submit").on("click", function(){
+		
+		var newReservation = {
+			name: $('#reserve_name').val().trim(),
+			phone: $('#reserve_phone').val().trim(),
+			email: $('#reserve_email').val().trim(),
+			uniquID: $('#reserve_uniqueID').val().trim()
+		};
+
+		console.log(newReservation);
+
+	    $.post("http://localhost:3001/api/tables", newReservation,
+	    function(data){
+
+	    	if(data == true){
+	    		alert("Yay! You are officially booked!")
+	    	}
+
+	    	if(data == false){
+	    		alert("Sorry you are on the wait list")
+	    	}
+	    });
+
+return false;
+
+});
+
+</script>
