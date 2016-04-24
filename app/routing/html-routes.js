@@ -1,13 +1,22 @@
-// Load Data
+// ===============================================================================
+// DEPENDENCIES
+// We need to include the path package to get the correct file path for our html
 // ===============================================================================
 var path = require('path');
 
-// Begin Routing
+
+
+
+
+// ===============================================================================
+// ROUTING
 // ===============================================================================
 
 module.exports = function(app){
 
-	// API GET Requests
+	// HTML GET Requests
+	// Below code handles when users "visit" a page. 
+	// In each of the below cases the user is shown an HTML page of content
 	// ---------------------------------------------------------------------------
 
 	app.get('/admin', function(req, res){
@@ -22,7 +31,7 @@ module.exports = function(app){
 		res.sendFile(path.join(__dirname + '/../public/reserve.html'));
 	});
 
-	// If no match found default to home
+	// If no matching route is found default to home
 	app.use(function(req, res){
 		res.sendFile(path.join(__dirname + '/../public/home.html'));
 	});

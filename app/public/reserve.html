@@ -15,7 +15,15 @@
 	<div class="container">
 		
 		<div class="jumbotron">
-			<h1 class="text-center">Hot Restaurant: Reservation Page</h1>
+			<h1 class="text-center"><span class="glyphicon glyphicon-fire"></span> Hot Restaurant</h1>
+			<hr>
+			<h2 class="text-center">Make your reservation</h2>
+			<br>
+
+			<div class="text-center">
+				<a href="/tables"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list-alt"></span> View Tables</button></a>
+				<a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>		
+			</div>
 		</div>
 
 		<div class="row">
@@ -58,33 +66,63 @@
 	
 			</div>
 		</div>
+
+
+	    <footer class="footer">
+	      <div class="container">
+	        <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a></p>
+	      </div>
+	    </footer>
+
 	</div>
 	
 </body>
 </html>
 
+<!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
 <script type="text/javascript">
+
+	// In this code below we create the Front-end Javascript which "POSTS" our form data to our express server.
+	// In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
+	// Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
+	// In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file 
+
 	$(".submit").on("click", function(){
 		
+		// Here we grab the form elements
 		var newReservation = {
-			name: $('#reserve_name').val().trim(),
-			phone: $('#reserve_phone').val().trim(),
-			email: $('#reserve_email').val().trim(),
-			uniquID: $('#reserve_uniqueID').val().trim()
+			customerName: $('#reserve_name').val().trim(),
+			phoneNumber: $('#reserve_phone').val().trim(),
+			customerEmail: $('#reserve_email').val().trim(),
+			customerID: $('#reserve_uniqueID').val().trim()
 		};
 
 		console.log(newReservation);
 
+		// This line is the magic. It's very similar to the standard ajax function we used. 
+		// Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+		// The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+		// depending on if a tables is available or not. 
+
 	    $.post("http://localhost:3001/api/tables", newReservation,
 	    function(data){
 
+	    	// If a table is available... tell user they are booked.
 	    	if(data == true){
 	    		alert("Yay! You are officially booked!")
 	    	}
 
+	    	// If a table is available... tell user they on the waiting list.
 	    	if(data == false){
 	    		alert("Sorry you are on the wait list")
 	    	}
+
+	    	// Clear the form when submitting
+    		$('#reserve_name').val("");
+			$('#reserve_phone').val("");
+			$('#reserve_email').val("");
+			$('#reserve_uniqueID').val("");
+
 	    });
 
 return false;
