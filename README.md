@@ -1,5 +1,6 @@
 # HotRestaurant
-Basic app demonstrating Node and Express with jQuery. 
+* Description: Basic app demonstrating Node and Express with jQuery. 
+* Live Demo: [https://hot-restaurant.herokuapp.com/](https://hot-restaurant.herokuapp.com/)
 
 ![Hot Restaurant Image](https://raw.githubusercontent.com/afhaque/HotRestaurant/master/images-readme/HotRestaurant.png)
 
@@ -10,6 +11,7 @@ Basic app demonstrating Node and Express with jQuery.
 * Then run the command `node server.js` to run the program
 
 ## Notes:
+* Current app doesn't have admin handling. We'll deal with that at a later time. 
 * Don't separate the Javascript from the HTML in the client-side code. (i.e. Dont use external Javascript. If you do, you will need an additional line of code to configure the express server to know where the javascript is).
 
 ## Good luck! Don't stress out. 
