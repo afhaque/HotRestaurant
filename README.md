@@ -1,5 +1,6 @@
 # HotRestaurant
-Basic app demonstrating Node and Express with jQuery. Live Demo [https://hot-restaurant.herokuapp.com/](https://hot-restaurant.herokuapp.com/)
+* Description: Basic app demonstrating Node and Express with jQuery. 
+* Live Demo: [https://hot-restaurant.herokuapp.com/](https://hot-restaurant.herokuapp.com/)
 
 ![Hot Restaurant Image](https://raw.githubusercontent.com/afhaque/HotRestaurant/master/images-readme/HotRestaurant.png)
 
