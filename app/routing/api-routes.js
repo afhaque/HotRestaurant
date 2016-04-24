@@ -4,9 +4,9 @@
 // These data sources hold arrays of information on table-data, waitinglist, etc.
 // ===============================================================================
 
-var tableData 		= require('../data/table-data.js')
-var waitListData 	= require('../data/waitinglist-data.js')
-
+var tableData 		= require('../data/table-data.js');
+var waitListData 	= require('../data/waitinglist-data.js');
+var path 			= require('path');
 
 
 
@@ -43,7 +43,7 @@ module.exports = function(app){
 
 		// Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
 		// It will do this by sending out the value "true" have a table 
-		if(tableData.length < 11 ){
+		if(tableData.length < 6 ){
 			tableData.push(req.body);
 			res.json(true); // KEY LINE
 		}
@@ -55,4 +55,16 @@ module.exports = function(app){
 		}
 
 	});
+
+	// ---------------------------------------------------------------------------
+	// I added this below code so you could clear out the table while working with the functionality.
+	// Don't worry about it!
+
+	app.post('/api/clear', function(req, res){
+		// Empty out the arrays of data
+		tableData = [];
+		waitListData = [];
+
+		console.log(tableData);
+	})
 }
