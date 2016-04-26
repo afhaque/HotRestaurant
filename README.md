@@ -9,6 +9,7 @@
 * Navigate to the folder where the repository exists using Git Bash or Terminal
 * Run the command `npm install` to download the required dependencies
 * Then run the command `node server.js` to run the program
+* Note: If you run into an EACCES error change the PORT number in the server.js file. 
 
 ## Notes:
 * Current app doesn't have admin handling. We'll deal with that at a later time. 
