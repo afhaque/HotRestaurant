@@ -13,7 +13,7 @@
 <body>
 
 	<div class="container">
-		
+
 		<div class="jumbotron">
 			<h1 class="text-center"><span class="glyphicon glyphicon-fire"></span> Hot Restaurant</h1>
 			<hr>
@@ -22,7 +22,7 @@
 
 			<div class="text-center">
 				<a href="/tables"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list-alt"></span> View Tables</button></a>
-				<a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>		
+				<a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
 			</div>
 		</div>
 
@@ -37,7 +37,7 @@
 					<div class="panel-body">
 
 						<form role="form">
-				
+
 							<div class="form-group">
 								<label for="">Name</label>
 								<input type="text" class="form-control" id="reserve_name">
@@ -63,19 +63,19 @@
 
 					</div>
 				</div>
-	
+
 			</div>
 		</div>
 
 
 	    <footer class="footer">
 	      <div class="container">
-	        <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> | <a href="https://github.com/afhaque/HotRestaurant">GitHub Repo</a></p>
+	        <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> </p>
 	      </div>
 	    </footer>
 
 	</div>
-	
+
 </body>
 </html>
 
@@ -85,10 +85,10 @@
 	// In this code below we create the Front-end Javascript which "POSTS" our form data to our express server.
 	// In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
 	// Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
-	// In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file 
+	// In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
 
 	$(".submit").on("click", function(){
-		
+
 		// Here we grab the form elements
 		var newReservation = {
 			customerName: $('#reserve_name').val().trim(),
@@ -99,12 +99,12 @@
 
 		console.log(newReservation);
 
-		// This line is the magic. It's very similar to the standard ajax function we used. 
+		// This line is the magic. It's very similar to the standard ajax function we used.
 		// Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
 		// The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
-		// depending on if a tables is available or not. 
+		// depending on if a tables is available or not.
 
-		// Here we get the location of the root page. 
+		// Here we get the location of the root page.
 		// We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
 		var currentURL = window.location.origin;
 

@@ -13,7 +13,7 @@
 <body>
 
 	<div class="container">
-		
+
 		<div class="jumbotron">
 			<h1 class="text-center"><span class="glyphicon glyphicon-fire"></span> Hot Restaurant</h1>
 			<hr>
@@ -21,8 +21,8 @@
 			<br>
 
 			<div class="text-center">
-				<a href="/reserve"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>		
-				<a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>		
+				<a href="/reserve"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
+				<a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
 			</div>
 		</div>
 
@@ -37,7 +37,7 @@
 					<div class="panel-body" id="tableSection">
 					</div>
 				</div>
-	
+
 				<!-- Waiting List Panel -->
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -53,12 +53,12 @@
 	    <footer class="footer">
 	      <div class="container">
 	      	<p>Control Panel</p>
-	        <p><a href="#" id="clear">Clear Table</a> | <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> | <a href="https://github.com/afhaque/HotRestaurant">GitHub Repo</a></p>
+	        <p><a href="#" id="clear">Clear Table</a> | <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a></p>
 	      </div>
 	    </footer>
 
 	</div>
-	
+
 </body>
 
 
@@ -67,16 +67,16 @@
 
 	// In this code, jQuery is used to "download" the data from our server
 	// We then dynamically display this content in our table. This is very similar to the group projects you just completed.
-	// It's also very similar to the NYT search application. In fact, I copied a ton of code from there. 
+	// It's also very similar to the NYT search application. In fact, I copied a ton of code from there.
 
 	function runTableQuery(){
 
-		// Here we get the location of the root page. 
+		// Here we get the location of the root page.
 		// We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
 		var currentURL = window.location.origin;
 
 		// The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
-		$.ajax({url: currentURL + "/api/tables", method: "GET"}) 
+		$.ajax({url: currentURL + "/api/tables", method: "GET"})
 			.done(function(tableData) {
 
 				// Here we are logging the URL so we have access to it for troubleshooting
@@ -88,7 +88,7 @@
 				console.log(tableData);
 				console.log("------------------------------------")
 
-				// Loop through and display each of the customers 
+				// Loop through and display each of the customers
 				for (var i=0; i<tableData.length; i++){
 
 					// Create the HTML Well (Section) and Add the table content for each reserved table
@@ -108,12 +108,12 @@
 
 	function runWaitListQuery(){
 
-		// Here we get the location of the root page. 
+		// Here we get the location of the root page.
 		// We use this instead of explicitly saying the URL is localhost:3001 because the url will change when we deploy.
 		var currentURL = window.location.origin;
 
 		// The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
-		$.ajax({url: currentURL + "/api/waitlist", method: "GET"}) 
+		$.ajax({url: currentURL + "/api/waitlist", method: "GET"})
 			.done(function(waitlistData) {
 
 				// Here we are logging the URL so we have access to it for troubleshooting
@@ -125,7 +125,7 @@
 				console.log(waitlistData);
 				console.log("------------------------------------")
 
-				// Loop through and display each of the customers 
+				// Loop through and display each of the customers
 				for (var i=0; i<waitlistData.length; i++){
 
 					// Create the HTML Well (Section) and Add the table content for each reserved table
@@ -146,7 +146,7 @@
 	function clearTable(){
 
 		var currentURL = window.location.origin;
-		$.ajax({url: currentURL + "/api/clear", method: "POST"}) 
+		$.ajax({url: currentURL + "/api/clear", method: "POST"})
 
 	}
 
